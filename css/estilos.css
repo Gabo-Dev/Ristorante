@@ -1,0 +1,385 @@
+:root{
+    --verde:#00A149;
+    --blanco:#fff;
+    --rojo:#881014;
+    --oscuro:#000;
+    --titulos: 'Arima Madurai',cursive;
+    --parrafos:'Mulish', sans-serif;
+}
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+body{
+    font-size: 1.6rem;
+    /* Oculta lo que aparece en el eje X (barra de navegación horizontal no necesaria)*/
+    overflow-x: hidden;
+}
+*,*::after, *::before{
+    box-sizing: inherit;
+}
+/* Globales */
+.contenedor{
+    max-width: 120rem;
+    margin: 0 auto;
+    width: 95%;
+}
+h1,h2{
+    font-family: var(--titulos);
+}
+h3,p,a{
+    font-family: var(--parrafos);
+}
+.verde{
+    color: var(--verde);
+}
+.rojo{
+    color: var(--rojo);
+}
+.ocultar{
+    display: none;
+}
+.btn-cerrar{
+    color: var(--blanco);
+    position: absolute;
+    top: 0;
+    right: 50px;
+    user-select: none;
+    font-size: 3rem;
+}
+.btn-cerrar:hover{
+    cursor: pointer;
+}
+.pantalla-completa{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 4;
+}
+@keyframes desplazamiento {
+    /* Al inicio de la animación*/
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
+
+.btn{
+    text-decoration: none;
+    color: var(--blanco);
+    font-size: 2rem;
+    /* La primera letra de cada palabra sea may. */
+    text-transform: capitalize;
+    padding: 1rem 5rem;
+    border-radius: 5px;
+    transition: all .3 ease-in-out;
+}
+.bordes{
+    border: 4px solid var(--blanco);
+}
+.bordes:hover{
+    color: var(--verde);
+    background-color: var(--blanco)
+}
+img{
+    /* Para que las imagenes ocupen la totalidad de su espacio contenedor */
+    max-width: 100%;
+}
+.btn-contactar{
+    background-color: var(--rojo);
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 2rem;
+}
+.btn-verde{
+    background-color: var(--verde);
+    border: none;
+    display: inline-block;
+    margin-bottom: 2rem;
+    font-family: var(--parrafos);
+}
+.btn-verde:hover{
+    background-color: var(--rojo);
+}
+
+
+
+
+
+/* encabezado */
+.contenedor-navegacion{
+    background-color: var(--oscuro);
+    position: relative;
+    z-index: 5;
+}
+.contenido-navegacion{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo h2, .navegacion a{
+    color: var(--blanco);
+}
+.logo h2{
+    font-size: 3rem;
+}
+/* conf. móvil */
+.navegacion a{
+    text-decoration: none;
+    font-size: 2rem;
+    padding: 1.5rem;
+    padding-left: 8rem;
+    display: block;
+    transition: color .3s ease-in-out;
+    text-align: center;
+}
+.navegacion a:first-of-type{
+    margin-top: 3.5rem;
+}
+.navegacion a:nth-child(even):hover{
+    color: var(--rojo);
+}
+.navegacion a:nth-child(odd):hover{
+    color: var(--verde);
+}
+.navegacion{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 45rem;
+    padding: 3rem 4rem;
+    background-color: var(--oscuro);
+    animation: desplazamiento .5s ease-in-out;
+}
+@media (min-width: 768px) {
+    .navegacion a{
+        text-align: left
+    }
+}
+.hamburguesa span{
+    display: block;
+    background-color: var(--blanco);
+    width: 3rem;
+    height: .5rem;
+    margin-bottom: .5rem;
+}
+.hamburguesa:hover{
+    cursor: pointer;
+}
+
+
+
+/* Contenedor video-Bienvenida */
+video{
+    width: 100%;
+    height: 100%;
+}
+.contenido-header{
+    position: relative;
+}
+/*
+     padre->relative
+     hijo->absolute
+*/
+.contenido-header::before{
+    content: '';
+    position: absolute;
+    /* Indicamos que ocupe todo el espacio disponible en todas las direcciones.*/
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+}
+.texto-encabezado{
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 80%;
+    /* Cambiamos la dirección de flexbox */
+    display: flex;
+    flex-direction: column;
+    /* En esta situación particular sendos atributos actuán de forma inversa a la normal */
+    align-items: center;
+    justify-content: center
+}
+.texto-encabezado h2{
+    color: var(--blanco);
+    font-size: 8rem;
+}
+@media (min-width: 768px) {
+    .texto-encabezado h2{
+        font-size: 6rem;
+    }
+    .btn{
+        font-size: 2rem;
+    }
+    .bordes{
+        border: 3px solid var(--blanco);
+    }
+}
+
+/* Sobre nosotros */
+.contenedor-nosotros{
+    padding-top: 5rem;
+}
+.texto-nosotros, .imagenes-nosotros{
+    flex: 0 0 calc(50% - 1rem);
+}
+.texto-nosotros .bienvenida{
+    color: var(--verde);
+    font-size: 3rem;
+    text-align: center;
+}
+.texto-nosotros h1{
+    font-size: 5rem;
+    text-align: center;
+}
+.texto-nosotros p{
+    font-size: 2rem;
+    text-align: center;
+}
+.imagenes-nosotros{
+    display: flex;
+    justify-content: space-between;
+}
+.imagenes-nosotros img{
+    border-radius: 5px;
+}
+.imagen1, .imagenes2{
+    flex: 0 0 calc(50% - 1rem);
+}
+.imagenes2 img{
+    margin-bottom: 1rem;
+}
+@media(min-width: 768px) {
+    .contenedor-nosotros{
+        display: flex;
+        justify-content: space-between;
+    }
+    .texto-nosotros .bienvenida {
+        text-align: left;
+    }
+    .texto-nosotros h1{
+        text-align: left;
+    } 
+    .texto-nosotros p{
+        text-align: left;
+    }
+}
+/* Platillos  */
+.menu{
+    padding-top: 4rem;
+}
+.texto-platillos{
+    text-align: center;
+    font-size: 5rem;
+}
+
+.botones-platillos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.botones-platillos  button{
+    flex: 0 0 calc(50% - 1rem);
+    padding: 1rem 3rem;
+}
+.platillo{
+
+    flex: 0 0 40rem; /* Del 100% disponible lo parta en 3 */
+    border: 1px solid #e1e1e1;
+    padding: 2rem;
+}
+.platillo h2{
+    text-align: center;
+}
+.platillo p{
+    font-size: 1.8rem;
+}
+.precio{
+    display: flex;
+    justify-content: space-between;
+}
+.precio p{
+    font-weight: bold;
+    font-size: 2rem;
+}
+.precio button{
+    padding: 1rem;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--rojo);
+    color: var(--blanco);
+    height: 3.7rem;
+}
+@media (min-width: 768px) {
+    .botones-platillos{
+        display: inline-block;
+    }
+    .botones-platillos button{
+        flex: unset;
+    }
+    .platillos{
+        display: flex;
+        /*justify-content: space-between;*/
+        flex-wrap: wrap;
+    }
+}
+/* Separador */
+/*Como todos los divs tienen un height predeterminado debemos adaptarlo*/
+.separador{
+    background-image: url(../assets/ensalada.webp);
+    background-size: cover;/*Para que se adapte al contenedor padre*/
+    background-position:  center center;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 2;
+}
+.separador::before{
+    content: '';
+    /*Configuración para que los elementos que se añadan ocupen todo */
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: -1;
+}
+.contenido-separador{
+    padding: 5rem;
+}
+.contenido-separador h2{
+    font-size: 4rem;
+    color: var(--blanco);
+    text-align: center;
+}
+.contenido-separador p{
+    color: var(--blanco);
+    font-size: 2.5rem;
+    text-align: center;
+}
+.contenido-separador a{
+    margin-left: 50px;
+}
+@media (min-width:760px) {
+    .contenido-separador h2{
+        text-align: left;
+        font-size: 5rem;
+        color: var(--blanco)
+    }
+    .contenido-separador p{
+        text-align: left;
+    }
+    .contenido-separador a{
+        margin: 0;
+    }
+}
